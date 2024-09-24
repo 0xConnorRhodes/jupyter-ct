@@ -1,8 +1,11 @@
 run:
 	docker run --rm -p 8888:8888 -it jupyterdev jupyter lab --allow-root --ip=0.0.0.0
 
-shell:
+s:
 	docker run --rm -p 8888:8888 -it jupyterdev /bin/bash
 
 build:
 	docker build -t jupyterdev .
+
+build-nocache:
+	docker build --no-cache -t jupyterdev .

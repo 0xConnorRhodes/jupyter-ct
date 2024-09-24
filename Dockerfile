@@ -1,13 +1,15 @@
-FROM ubuntu:latest
+FROM fedora
 
-RUN apt-get update -y && \
-    apt-get full-upgrade -y
+RUN dnf install -y \
+    python3-pip \
+    ruby \
+    ruby-devel \
+    make \
+    zeromq-devel \
+    rake
 
-RUN apt-get install -y \
-    ruby-full \ 
-    python3 \
-    python3-pip
+RUN pip3 install jupyterlab
 
 RUN gem install iruby
 
-RUN pip3 install jupyterlab --break-system-packages
+RUN iruby register --force
